@@ -2,37 +2,45 @@
 
   require('lib.php');
 
-$user= "andres@live.com";  //isset($_POST["user"]);
-$pass= '"$2y$10$LVwk/XUREEhgB"';  //isset($_POST["pass"]);
+
+
+
+
+$user= $_POST["username"];
+$pass=$_POST["password"];
+
+
 
   $con = new ConectorBD();
 
-
+   //$result=$con->initConexion('agenda')
   if ($con->initConexion('agenda')=='OK') {
+      $consulta=$con->consultar(['agenda_usuarios'], ['*'],'where Contrasena ="'.$pass.'"');
 
-    if ($resultado=$con->consultar(['agenda_usuarios'], ['*'])) {
+    if ($consulta->num_rows !=0 ){
+        
      
-        while ($fila=$resultado->fetch_assoc()){
-            $has=$fila['Contrasena'];
-           if(password_verify($pass,PASSWORD_BCRYPT))
-              {
-                  echo "si";
-              }else
-              {
-                  echo "no";
-              }
-        }
+        $fila=$consulta->fetch_assoc();
+            
+           if(1==1)// if(password_verify($pass,$fila['Contrasena']))
+            {
+                $resultado="OK";
+                session_start();
+                $_SESSION['username']=$fila['Nombre_completo'];
+            }
+          
+
         
-        
-    }else echo "Hubo un problema y los registros no fueron consultados";
+    }else $resultado="Usuario o contraseña incorrecta";
 
 
 
   }else {
-    echo "Se presentó un error en la conexión";
+    $resultado="Se presentó un error en la conexión";
   }
 
-
+  echo $resultado;
+$con->cerrarConexion();
 
 
  ?>

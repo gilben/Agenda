@@ -10,16 +10,17 @@ class EventsManager {
         let url = '../server/getEvents.php'
         $.ajax({
           url: url,
-          dataType: "json",
+         // dataType: "json",
           cache: false,
           processData: false,
           contentType: false,
           type: 'GET',
           success: (data) =>{
-            if (data.msg=="OK") {
+            if (data=="OK") {
+                console.log(data);
               this.poblarCalendario(data.eventos)
             }else {
-              alert(data.msg)
+              alert(data)
               window.location.href = 'index.html';
             }
           },
@@ -230,5 +231,10 @@ function initForm(){
       $('.timepicker, #end_date').removeAttr("disabled")
     }
   })
+    
+    
 
 }
+
+
+

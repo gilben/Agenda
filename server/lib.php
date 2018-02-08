@@ -99,7 +99,7 @@
       return $this->ejecutarQuery($sql);
     }
 
-    function consultar($tablas, $campos, $condicion = ""){
+    function consultar($tablas, $campos, $condicion ){
       $sql = "SELECT ";
       $ultima_key = end(array_keys($campos));
       foreach ($campos as $key => $value) {

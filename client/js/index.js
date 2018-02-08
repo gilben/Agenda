@@ -1,5 +1,7 @@
+
 $(function(){
   var l = new Login();
+    
 })
 
 
@@ -21,17 +23,22 @@ class Login {
     form_data.append('password', $('#password').val())
     $.ajax({
       url: '../server/check_login.php',
-      dataType: "json",
+      //dataType: "json",
       cache: false,
       processData: false,
       contentType: false,
       data: form_data,
       type: 'POST',
       success: function(php_response){
-        if (php_response.msg == "OK") {
-          window.location.href = 'main.html';
+    
+     
+        if (php_response=='OK') {
+       
+        window.location.href = 'main.html';
         }else {
-          alert(php_response.msg);
+            
+        $('#msg').empty();
+            $('#msg').append(php_response);
         }
       },
       error: function(){
@@ -40,3 +47,6 @@ class Login {
     })
   }
 }
+
+
+

@@ -7,7 +7,7 @@
   if ($con->initConexion('agenda')=='OK') {
 
     $datos['Usuario'] = "oscar@live.com";
-    $datos['Contrasena']=password_hash("1234",PASSWORD_BCRYPT);
+    $datos['Contrasena']=1234;//password_hash("1234",PASSWORD_BCRYPT);
     $datos['Nombre_Completo'] ="oscar Castro";
     $datos['Fecha_Nacimiento']="1984-12-06";    
 
