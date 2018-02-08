@@ -2,6 +2,9 @@
 $(function(){
   var l = new Login();
     
+   $('input').focusin(function(){
+        $('#msg').empty();
+   })
 })
 
 
@@ -38,7 +41,7 @@ class Login {
         }else {
             
         $('#msg').empty();
-            $('#msg').append(php_response);
+            $('#msg').append('<p style="color:red">'+php_response+'</p>');
         }
       },
       error: function(){

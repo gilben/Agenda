@@ -15,7 +15,7 @@ $pass=$_POST["password"];
 
    //$result=$con->initConexion('agenda')
   if ($con->initConexion('agenda')=='OK') {
-      $consulta=$con->consultar(['agenda_usuarios'], ['*'],'where Contrasena ="'.$pass.'"');
+      $consulta=$con->consultar(['agenda_usuarios'], ['*'],'where Contrasena ="'.$pass.'" AND Usuario="'.$user.'"');
 
     if ($consulta->num_rows !=0 ){
         
