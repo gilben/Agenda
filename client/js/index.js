@@ -26,7 +26,7 @@ class Login {
     form_data.append('password', $('#password').val())
     $.ajax({
       url: '../server/check_login.php',
-      //dataType: "json",
+      dataType: "text",
       cache: false,
       processData: false,
       contentType: false,
@@ -34,7 +34,7 @@ class Login {
       type: 'POST',
       success: function(php_response){
     
-     
+     console.log(php_response);
         if (php_response=='OK') {
        
         window.location.href = 'main.html';

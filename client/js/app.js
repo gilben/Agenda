@@ -10,7 +10,7 @@ class EventsManager {
         let url = '../server/getEvents.php'
         $.ajax({
           url: url,
-         // dataType: "json",
+         dataType: "text",
           cache: false,
           processData: false,
           contentType: false,
@@ -86,14 +86,14 @@ class EventsManager {
       }
       $.ajax({
         url: '../server/new_event.php',
-        dataType: "json",
+        dataType: "text",
         cache: false,
         processData: false,
         contentType: false,
         data: form_data,
         type: 'POST',
         success: (data) =>{
-          if (data.msg=="OK") {
+          if (data=="OK") {
             alert('Se ha añadido el evento exitosamente')
             if (document.getElementById('allDay').checked) {
               $('.calendario').fullCalendar('renderEvent', {
@@ -114,10 +114,11 @@ class EventsManager {
 
 
           }else {
-            alert(data.msg)
+            alert(data)
           }
         },
         error: function(){
+            console.log(data);
           alert("error en la comunicación con el servidor");
         }
       })
