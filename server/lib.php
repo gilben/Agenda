@@ -95,7 +95,8 @@
     }
 
     function eliminarRegistro($tabla, $condicion){
-      $sql = "DELETE FROM ".$tabla." WHERE ".$condicion.";";
+      $sql ="DELETE FROM ".$tabla." WHERE ".$condicion.";";
+     
       return $this->ejecutarQuery($sql);
     }
 

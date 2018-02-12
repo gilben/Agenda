@@ -1,10 +1,5 @@
-
 $(function(){
   var l = new Login();
-    
-   $('input').focusin(function(){
-        $('#msg').empty();
-   })
 })
 
 
@@ -26,22 +21,20 @@ class Login {
     form_data.append('password', $('#password').val())
     $.ajax({
       url: '../server/check_login.php',
-      dataType: "text",
+      dataType: "json",
       cache: false,
       processData: false,
       contentType: false,
       data: form_data,
       type: 'POST',
       success: function(php_response){
-    
-     console.log(php_response);
-        if (php_response=='OK') {
-       
-        window.location.href = 'main.html';
+          console.log(php_response.msg);
+        if (php_response.msg == "OK") {
+          window.location.href = 'main.html';
         }else {
-            
+
         $('#msg').empty();
-            $('#msg').append('<p style="color:red">'+php_response+'</p>');
+         $('#msg').append('<p style="color:red">'+php_response.msg+'</p>');
         }
       },
       error: function(){
@@ -50,6 +43,3 @@ class Login {
     })
   }
 }
-
-
-

@@ -1,5 +1,6 @@
 
 
+
 class EventsManager {
     constructor() {
         this.obtenerDataInicial()
@@ -10,22 +11,24 @@ class EventsManager {
         let url = '../server/getEvents.php'
         $.ajax({
           url: url,
-         dataType: "text",
+          dataType: "json",
           cache: false,
           processData: false,
           contentType: false,
-          type: 'GET',
+          type: 'POST',
           success: (data) =>{
-            if (data=="OK") {
-                console.log(data);
-              this.poblarCalendario(data.eventos)
+
+            if (data.msg=="OK") {
+      console.log(data.evento);
+             this.poblarCalendario(data.eventos)
             }else {
-              alert(data)
+              alert(data.msg)
               window.location.href = 'index.html';
             }
           },
           error: function(){
-            alert("error en la comunicación con el servidor");
+            alert("error en la comunicación con el servidor,Inicie sesion nuevamente");
+            window.location.href = 'index.html';
           }
         })
 
@@ -38,7 +41,7 @@ class EventsManager {
         		center: 'title',
         		right: 'month,agendaWeek,basicDay'
         	},
-        	defaultDate: '2016-11-01',
+        	defaultDate: '2018-01-01',
         	navLinks: true,
         	editable: true,
         	eventLimit: true,
@@ -86,14 +89,14 @@ class EventsManager {
       }
       $.ajax({
         url: '../server/new_event.php',
-        dataType: "text",
+        dataType: "json",
         cache: false,
         processData: false,
         contentType: false,
         data: form_data,
         type: 'POST',
         success: (data) =>{
-          if (data=="OK") {
+          if (data.msg=="OK") {
             alert('Se ha añadido el evento exitosamente')
             if (document.getElementById('allDay').checked) {
               $('.calendario').fullCalendar('renderEvent', {
@@ -114,12 +117,11 @@ class EventsManager {
 
 
           }else {
-            alert(data)
+            alert(data.msg)
           }
         },
         error: function(){
-            console.log(data);
-          alert("error en la comunicación con el servidor");
+          alert("error en la comunicación con el servidor1");
         }
       })
 
@@ -145,7 +147,7 @@ class EventsManager {
           }
         },
         error: function(){
-          alert("error en la comunicación con el servidor");
+          alert("error en la comunicación con el servidor2");
         }
       })
       $('.delete-btn').find('img').attr('src', "img/trash.png");
@@ -190,7 +192,7 @@ class EventsManager {
             }
           },
           error: function(){
-            alert("error en la comunicación con el servidor");
+            alert("error en la comunicación con el servidor3");
           }
         })
     }
@@ -232,10 +234,5 @@ function initForm(){
       $('.timepicker, #end_date').removeAttr("disabled")
     }
   })
-    
-    
 
 }
-
-
-

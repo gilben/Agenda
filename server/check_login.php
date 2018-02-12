@@ -6,7 +6,7 @@
 
 
 
-$user= $_POST["username"];
+$user=$_POST["username"];
 $pass=$con->encriptar($_POST["password"]);
 
 
@@ -22,18 +22,18 @@ $pass=$con->encriptar($_POST["password"]);
 
         $fila=$consulta->fetch_assoc();
        
-                $resultado="OK";
+                $resultado['msg']='OK';
                 session_start();
-                $_SESSION['username']=$fila['Nombre_completo'];
+                $_SESSION['user']=$fila['Id_Usuario'];
 
-    }else $resultado="Usuario o contraseña incorrecta";
+    }else $resultado['msg']='Usuario o contraseña incorrecta';
 
   }else {
-    $resultado="Se presentó un error en la conexión";
+    $resultado['msg']='Se presentó un error en la conexión';
   }
 
-  echo $resultado;
-$con->cerrarConexion();
+  echo json_encode($resultado);
+   $con->cerrarConexion();
 
 
  ?>
