@@ -12,7 +12,7 @@ $con=new ConectorBD();
 
 if($con->initConexion('agenda')=='OK')
 {
-	$datos=$_POST['id'];
+	$datos='id_evento='.$_POST['id'];
 
     
     if( $d=$con->eliminarRegistro('agenda_eventos',$datos))

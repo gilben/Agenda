@@ -91,6 +91,7 @@
         }else $sql .= ' WHERE '.$condicion.';';
         $i++;
       }
+
       return $this->ejecutarQuery($sql);
     }
 

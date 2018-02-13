@@ -6,7 +6,7 @@
 
   if ($con->initConexion('agenda')=='OK') {
 
-    $datos['Usuario'] = "gil@live.com";
+    $datos['Usuario'] = "ant@live.com";
     $datos['Contrasena']=$con->encriptar('1234');
     $datos['Nombre_Completo'] ="oscar Castro";
     $datos['Fecha_Nacimiento']="1984-12-06";    
