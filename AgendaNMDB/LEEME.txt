@@ -1,0 +1,3 @@
+LA BASE DE DATOS SE LLAMA agenda
+adjunto las collecions en formato .json 
+

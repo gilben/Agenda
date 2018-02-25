@@ -1,0 +1,2 @@
+{"_id":{"$oid":"5a9306fc85a45b0e1baa9712"},"id":"Entrega de tarea01","title":"Entrega de tarea","start":"2018-02-02","end":"Invalid da","start_hour":"2018-02-02","end_hour":"e","fk_usuario":"g@gmail.com"}
+{"_id":"prueba01","title":"prueba","start":"2018-02-05","end":"","start_hour":null,"end_hour":null,"fk_usuario":"g@gmail.com"}
